@@ -76,7 +76,7 @@ while True:
     ristorante_creato = ristorante(nome, tipo_cucina)
     descrizione_del_ristorante = input("inserisci una descrizione del ristorante")
     ristorante_creato.aggiungi_descrizione(descrizione_del_ristorante)
-    nuovo_menu = int("Ristorante creato, scrivi 1 per aggiungere piatti al menu")
+    nuovo_menu = int(input("Ristorante creato, scrivi 1 per aggiungere piatti al menu"))
     if nuovo_menu==1:
         while nuovo_menu==1:
             print("Benvenuto, aggiungi al menu e in seguito siamo pronti per aprire un ristorante")
