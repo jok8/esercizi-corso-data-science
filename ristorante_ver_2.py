@@ -23,7 +23,7 @@ class ristorante:
         self.aperto = aperto
     
     #metodo aggiungi descrizione
-    def aggiungi_descrizione(self, descrizione= input("Inserisci una descrizione")):
+    def aggiungi_descrizione(self, descrizione= input("Inserisci una descrizione\n")):
         if ristorante.contatore_descrizione == 0:
              ristorante.descrizione_ristorante = descrizione
         if ristorante.contatore_descrizione == 1:
@@ -35,12 +35,15 @@ class ristorante:
     
     #metodo stato apertura
     def stato_apertura(self):
-        print(self.aperto)
+        if self.aperto==True:
+            print("Il ristorante è aperto")
+        elif self.aperto==False:
+            print("Il ristorante è chiuso")
 
     #metodo apri ristorante
     def apri_ristorante(self):
         self.aperto=True
-    
+        
     #metodo chiudi ristorante
     def chiudi_ristorante(self):
         self.aperto=False
@@ -64,6 +67,19 @@ class ristorante:
 
 #test della classe
 
+Da_nonna_Giuseppina = ristorante("Da nonna Giuseppina", "italiana")
+
+print(Da_nonna_Giuseppina.stato_apertura())
+
+Da_nonna_Giuseppina.apri_ristorante()
+
+print(Da_nonna_Giuseppina.stato_apertura())
+
+Da_nonna_Giuseppina.aggiungi_descrizione()
+
+print(Da_nonna_Giuseppina.descrizione_ristorante)
+
+Da_nonna_Giuseppina.aggiungi_descrizione()
 
 
 
