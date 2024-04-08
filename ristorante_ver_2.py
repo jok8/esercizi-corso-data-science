@@ -23,9 +23,10 @@ class ristorante:
         self.aperto = aperto
     
     #metodo aggiungi descrizione
-    def aggiungi_descrizione(self, descrizione= input("Inserisci una descrizione\n")):
+    def aggiungi_descrizione(self, descrizione):
         if ristorante.contatore_descrizione == 0:
              ristorante.descrizione_ristorante = descrizione
+             print("La descrizione è stata aggiunta")
         if ristorante.contatore_descrizione == 1:
             print("La descrizione è già stata aggiunta")
     
@@ -73,6 +74,8 @@ while True:
     nome = input("digita il nome del tuo ristorante")
     tipo_cucina = input("digita il tipo di cucina del tuo ristorante")
     ristorante_creato = ristorante(nome, tipo_cucina)
+    descrizione_del_ristorante = input("inserisci una descrizione del ristorante")
+    ristorante_creato.aggiungi_descrizione(descrizione_del_ristorante)
     nuovo_menu = int("Ristorante creato, scrivi 1 per aggiungere piatti al menu")
     if nuovo_menu==1:
         while nuovo_menu==1:
