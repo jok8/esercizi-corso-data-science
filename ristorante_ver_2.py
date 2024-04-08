@@ -12,7 +12,7 @@
 
 class ristorante:
     contatore_descrizione = 0
-    menu = {'primi_piatti': {"portata": {'nome':"" ,'prezzo': ""}},"secondi_piatti": {"portata": {'nome':"",'prezzo': ""}},"frutta":{"portata":{'nome':"",'prezzo': ""}}, "dolce": {"portata":{'nome':"",'prezzo': ""}}}
+    menu = {'primi_piatti': {"1": {'nome':"" ,'prezzo': ""}},"secondi_piatti": {"1": {'nome':"",'prezzo': ""}},"frutta":{"1":{'nome':"",'prezzo': ""}}, "dolce": {"1":{'nome':"",'prezzo': ""}}}
     descrizione_ristorante = ""
 
     #definisco i metodi
@@ -49,16 +49,16 @@ class ristorante:
         self.aperto=False
     
     #metodo aggiungi al menu
-    def aggiungi_al_menu(self, quale_piatto, portata, nome, prezzo):
+    def aggiungi_al_menu(self, quale_piatto, n_portata, nome, prezzo):
         if portata in ristorante.menu['primi_piatti']:
-            ristorante.menu[quale_piatto][portata]['prezzo'] += prezzo
+            ristorante.menu[quale_piatto][n_portata]['prezzo'] += prezzo
         else:
-            ristorante.menu[quale_piatto][portata] = {'nome': nome, 'prezzo': prezzo}
-        print(f"Aggiunto: {portata}, nome: {nome}, Prezzo: {prezzo}")
+            ristorante.menu[quale_piatto][n_portata] = {'nome': nome, 'prezzo': prezzo}
+        print(f"Aggiunto: nome: {nome}, Prezzo: {prezzo}")
 
     #metodo togli dal menu
-    def togli_dal_menu (self, quale_piatto, portata):
-        del ristorante.menu[quale_piatto][portata]
+    def togli_dal_menu (self, quale_piatto, n_portata):
+        del ristorante.menu[quale_piatto][n_portata]
 
     #stampa menu
     def stampa_menu(self):
@@ -67,20 +67,13 @@ class ristorante:
 
 #test della classe
 
-Da_nonna_Giuseppina = ristorante("Da nonna Giuseppina", "italiana")
-
-print(Da_nonna_Giuseppina.stato_apertura())
-
-Da_nonna_Giuseppina.apri_ristorante()
-
-print(Da_nonna_Giuseppina.stato_apertura())
-
-Da_nonna_Giuseppina.aggiungi_descrizione()
-
-print(Da_nonna_Giuseppina.descrizione_ristorante)
-
-Da_nonna_Giuseppina.aggiungi_descrizione()
-
+while True:
+    print("benvenuto sul gestore di creazione ristorante")
+    nome = input("digita il nome del tuo ristorante")
+    tipo_cucina = input("digita il tipo di cucina del tuo ristorante")
+    ristorante_creato = ristorante(nome, tipo_cucina)
+    print("Benvenuto, aggiungi al menu e in seguito siamo pronti per aprire un ristorante")
+    tipo_di_piatto
 
 
         
