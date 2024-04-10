@@ -21,24 +21,25 @@ class registro_vendite:
 
     #metodo della somma dei giorni di un mese
     def somma_giorni(self, mese):
-        if mese in registro_vendite:
+        if mese in registro_vendite.registro:
             count= 0
             sum = 0
-            for key in registro_vendite[mese]:
+            for key in registro_vendite.registro[mese]:
                 count+=1
-                sum+=registro_vendite[mese][key]
+                sum+=registro_vendite.registro[mese][key]
             print("questa è la somma delle vendite del mese")
         else:
             print("mese non ancora registrato")
     
     #metodo della media dei giorni
     def media_dei_giorni(self, mese):
-        if mese in registro_vendite:
+        self.mese = mese
+        if mese in registro_vendite.registro:
             count= 0
             sum = 0
-            for key in registro_vendite[mese]:
+            for key in registro_vendite.registro[mese]:
                 count+=1
-                sum+=registro_vendite[mese][key]
+                sum+=registro_vendite.registro[mese][key]
             print(f"questa è la media delle vendite del mese: {sum/count}")
         else:
             print("mese non ancora registrato")
@@ -55,13 +56,12 @@ class registro_vendite:
 
 class giorno_di_vendita(registro_vendite):
     #metodo costruttore
-    def __init__(self, mese, giorno, anno):
-        super().__init__(anno)
+    def __init__(self, mese, giorno, vendite):
         self.mese = mese
         self.giorno = giorno
-
-    def aggiungi_a_registro(self, vendite):
         self.vendite = vendite
+
+    def aggiungi_a_registro(self):
         self.registro[self.mese]={self.giorno : self.vendite}
 
 
@@ -76,17 +76,19 @@ while True:
                registrazione_giorno = int(input("dimmi il numero del giorno che vuoi inserire"))
             except ValueError:
                 print("devi inserire un numero")
+                break
             registrazione_vendite = int(input("inserisci un valore per le vendite"))
             oggetto_giorno = giorno_di_vendita(registrazione_mese,registrazione_giorno,registrazione_vendite)
             conferma = int(input("Pe confermare scrivere 1\n Per uscire scrivere 0"))
             if conferma == 1:
-                oggetto_giorno.aggiungi_a_registro
+                oggetto_giorno.aggiungi_a_registro()
                 print("Perfetto, vendita aggiunta")
+                print(oggetto_giorno.registro)
                 altra_aggiunta = int(input("per continuare ad aggiungere vendite, scrivere 1, per stampare la media delle vendite del mese scrivere 2"))
                 if altra_aggiunta == 1:
                     continue
                 elif altra_aggiunta == 2:
-                    oggetto_giorno.media_dei_giorni
+                    oggetto_giorno.media_dei_giorni(registrazione_mese)
             elif conferma == 0:
                 print("conferma non selezionata, uscita dal programma")
                 break
