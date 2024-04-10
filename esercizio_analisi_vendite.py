@@ -72,9 +72,8 @@ while True:
     if dati == 1:
         registrazione_mese = input("Perfetto, inserisci il mese in cui inserire i dati")
         if registrazione_mese not in registro_vendite.registro:
-            registrazione_giorno = int(input("dimmi il numero del giorno che vuoi inserire"))
             try:
-                registrazione_giorno
+               registrazione_giorno = int(input("dimmi il numero del giorno che vuoi inserire"))
             except ValueError:
                 print("devi inserire un numero")
             registrazione_vendite = int(input("inserisci un valore per le vendite"))
@@ -83,9 +82,11 @@ while True:
             if conferma == 1:
                 oggetto_giorno.aggiungi_a_registro
                 print("Perfetto, vendita aggiunta")
-                altra_aggiunta = int(input("per continuare ad aggiungere vendite, scrivere 1"))
+                altra_aggiunta = int(input("per continuare ad aggiungere vendite, scrivere 1, per stampare la media delle vendite del mese scrivere 2"))
                 if altra_aggiunta == 1:
                     continue
+                elif altra_aggiunta == 2:
+                    oggetto_giorno.media_dei_giorni
             elif conferma == 0:
                 print("conferma non selezionata, uscita dal programma")
                 break
