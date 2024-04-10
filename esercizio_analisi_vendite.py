@@ -16,15 +16,15 @@ class registro_vendite:
     registro = {}
     
     #metodo costruttore
-    def __init__(self)
-        pass
+    def __init__(self, anno):
+        self.anno = anno
 
     #metodo della somma dei giorni di un mese
     def somma_giorni(self, mese):
         if mese in registro_vendite:
             count= 0
             sum = 0
-            for key in registro_vendite[mese]
+            for key in registro_vendite[mese]:
                 count+=1
                 sum+=registro_vendite[mese][key]
             print("questa è la somma delle vendite del mese")
@@ -36,7 +36,7 @@ class registro_vendite:
         if mese in registro_vendite:
             count= 0
             sum = 0
-            for key in registro_vendite[mese]
+            for key in registro_vendite[mese]:
                 count+=1
                 sum+=registro_vendite[mese][key]
             print(f"questa è la media delle vendite del mese: {sum/count}")
@@ -46,7 +46,7 @@ class registro_vendite:
     #metodo del giorno più alto della media
     def superiore_alla_media(self, mese):
         if mese in registro_vendite:
-            for giorno in registro_vendite[mese]
+            for giorno in registro_vendite[mese]:
                 if giorno > self.media_dei_giorni():
                     print(f"Il giorno {giorno} è superiore alla media")
         else:
@@ -55,19 +55,40 @@ class registro_vendite:
 
 class giorno_di_vendita(registro_vendite):
     #metodo costruttore
-    def __init__(self, mese, giorno):
+    def __init__(self, mese, giorno, anno):
+        super().__init__(anno)
         self.mese = mese
         self.giorno = giorno
+
+    def aggiungi_a_registro(self, vendite):
+        self.vendite = vendite
+        self.registro[self.mese]={self.giorno : self.vendite}
+
 
 
 flag = True
 while True:
-    dati = input("Benvenuto nell'area vendite, per inserire dei dati scrivi 1, per chiudere l'applicazione scrivi 0")
+    dati = int(input("Benvenuto nell'area vendite, per inserire dei dati scrivi 1, per chiudere l'applicazione scrivi 0"))
     if dati == 1:
         registrazione_mese = input("Perfetto, inserisci il mese in cui inserire i dati")
         if registrazione_mese not in registro_vendite.registro:
-            registrazione_giorno = 
-            registro_vendite.registro.setdefault(registrazione_mese,)
+            registrazione_giorno = int(input("dimmi il numero del giorno che vuoi inserire"))
+            try:
+                registrazione_giorno
+            except ValueError:
+                print("devi inserire un numero")
+            registrazione_vendite = int(input("inserisci un valore per le vendite"))
+            oggetto_giorno = giorno_di_vendita(registrazione_mese,registrazione_giorno,registrazione_vendite)
+            conferma = int(input("Pe confermare scrivere 1\n Per uscire scrivere 0"))
+            if conferma == 1:
+                oggetto_giorno.aggiungi_a_registro
+                print("Perfetto, vendita aggiunta")
+                altra_aggiunta = int(input("per continuare ad aggiungere vendite, scrivere 1"))
+                if altra_aggiunta == 1:
+                    continue
+            elif conferma == 0:
+                print("conferma non selezionata, uscita dal programma")
+                break
         
 
 
